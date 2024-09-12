@@ -271,3 +271,4 @@ MonoBehaviour:
   body: {fileID: 6449364802413463}
   onGround: 1
   collide: {fileID: 3557327843128524543}
+  coins: 0
