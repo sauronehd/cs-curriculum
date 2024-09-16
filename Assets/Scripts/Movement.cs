@@ -14,11 +14,11 @@ public class Movement : MonoBehaviour
     public Rigidbody2D body;
     public int onGround = 1;
     public Collider2D collide;
-    public int coins;
+    private managingdotscript gm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<managingdotscript>();   
     }
 
     // Update is called once per frame
@@ -66,9 +66,9 @@ public class Movement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        coins += 1;
+        gm.coins += 1;
         Object.Destroy(other.gameObject);
-        print(coins);
+        print(gm.coins);
 
     }
 }

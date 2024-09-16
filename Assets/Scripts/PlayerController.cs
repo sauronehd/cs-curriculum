@@ -11,7 +11,17 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        
+        if (SceneManager.GetActiveScene().name == "Start"|| SceneManager.GetActiveScene().name == "Platformer")
+        {
+            overworld = false;
+
+        }
+        else if (SceneManager.GetActiveScene().name == "Overworld")
+        {
+
+            overworld = true;
+        }
+
 
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
@@ -29,7 +39,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+
+
+
+
+
     }
     
     //for organization, put other built-in Unity functions here
