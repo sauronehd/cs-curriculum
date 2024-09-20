@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3557327843128524543}
   - component: {fileID: 5774960653562304022}
   - component: {fileID: 1555645301336390038}
+  - component: {fileID: 3923347649850382891}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -271,4 +272,15 @@ MonoBehaviour:
   body: {fileID: 6449364802413463}
   onGround: 1
   collide: {fileID: 3557327843128524543}
-  coins: 0
+--- !u!114 &3923347649850382891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049566408774423969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114d37ed8c21848f99304cf142f41aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
