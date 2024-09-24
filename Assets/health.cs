@@ -6,18 +6,17 @@ public class health : MonoBehaviour
 {
     // Start is called before the first frame update
     public managingdotscript gm;
-    public TextMeshProUGUI healthText;
+
     void Start()
     {
-        
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<managingdotscript>(); 
-       healthText.text = gm.getHealth().ToString();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.text = gm.getHealth().ToString();
+        
         if (gm.getHealth() < 1)
         {
             gm.DEATH();

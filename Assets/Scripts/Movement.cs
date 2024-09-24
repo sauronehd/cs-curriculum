@@ -66,9 +66,9 @@ public class Movement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        gm.coins += 1;
+        gm.chnageCoins(1);
         Object.Destroy(other.gameObject);
-        print(gm.coins);
+        
 
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Axe
   - Spikes
   - ground
+  - healthText
   layers:
   - Default
   - TransparentFX
