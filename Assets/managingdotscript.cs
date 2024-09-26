@@ -51,7 +51,10 @@ public class managingdotscript : MonoBehaviour
     public void DEATH()
     {
         print("fucking loser");
-        
+        SceneManager.LoadScene(0);
+        hp = 5;
+        healthText.text = "Health: " + hp;
+
     }
 
     public void chnageCoins(int amt)
