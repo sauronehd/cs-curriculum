@@ -29,6 +29,12 @@ public class health : MonoBehaviour
         {
             gm.changeHealth(-1);
         }
+        else if (other.gameObject.CompareTag("proj"))
+        {
+            Destroy(other.gameObject);
+            gm.changeHealth(-1);
+            
+        }
             
             
     }
