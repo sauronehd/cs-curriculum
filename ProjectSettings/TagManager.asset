@@ -11,6 +11,7 @@ TagManager:
   - ground
   - healthText
   - proj
+  - waypoints
   layers:
   - Default
   - TransparentFX
