@@ -54,6 +54,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  animation: {fileID: 2864171262592659787}
+  angle: 0
 --- !u!61 &2399072710900510365
 BoxCollider2D:
   m_ObjectHideFlags: 0
