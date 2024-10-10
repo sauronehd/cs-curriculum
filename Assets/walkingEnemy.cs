@@ -10,49 +10,67 @@ public class walkingEnemy : MonoBehaviour
    [SerializeField] public Animator animation;
      int count = 0;
      private Vector3 movingTowards;
-    [SerializeField] private float angle;
+     private float deltaX;
+     private float deltaY;
+     //private bool chase;
+    
+     
+    
     void Start()
     {
-        //GetComponentInChildren<Animator>();
+        //chase = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         movingTowards = Vector3.MoveTowards(transform.position, waypoints[count], 2*Time.deltaTime);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y),7);
+        foreach (var other in targets)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                //chase = true;
+                movingTowards =  Vector3.MoveTowards(transform.position,other.gameObject.transform.position,2*Time.deltaTime) ;
+            }
+        }
+
         
-        angle =  MathF.Abs( MathF.Atan(movingTowards.x - transform.position.x/movingTowards.y - transform.position.y));
         
         
-        if (angle >= 0 && angle < MathF.PI / 3)
+        deltaX = movingTowards.x - transform.position.x;
+        deltaY = movingTowards.y - transform.position.y;
+
+
+        if (MathF.Abs(deltaY )>MathF.Abs( 3 * deltaX))
         {
-            animation.Play("WalkRight");
-            print("right");
+            if (deltaY < 0)
+            {
+                animation.Play("WalkDown");
+            }
+            else if (deltaY > 0)
+            {
+                animation.Play("WalkUp");
+            }
+            
         }
-        else if (angle >= MathF.PI / 3 && angle <= 2 * MathF.PI / 3)
+        else
         {
-            animation.Play("WalkUp");
-            print("up");
-        }
-        else if (angle > 2*MathF.PI / 3 && angle <= 4 * MathF.PI / 3)
-        {
-            animation.Play("WalkLeft");
-            print("left");
-        }
-        else if (angle >= 4*MathF.PI / 3 && angle <= 5 * MathF.PI / 3)
-        {
-            animation.Play("WalkDown");
-            print("down");
-        }
-        else if (angle >= 5*MathF.PI / 3 && angle <= 2 * MathF.PI )
-        {
-            animation.Play("WalkRight");
-            print("right");
+            if (deltaX < 0)
+            {
+                animation.Play("WalkLeft");
+            }
+            else if (deltaX > 0)
+            {
+                animation.Play("WalkRight");
+            }
         }
         
         
         transform.position = movingTowards;
+        
+        
+        
         if (transform.position == waypoints[count])
         {
             count += 1;
@@ -63,6 +81,8 @@ public class walkingEnemy : MonoBehaviour
         }
 
     }
+
+
 }
 
 
