@@ -92,12 +92,12 @@ public class walkingEnemy : MonoBehaviour
                         if (deltaY < 0)
                         {
                             animation.Play("AttackDown");
-                            print("attack down");
+                            //print("attack down");
                         }
                         else if (deltaY > 0)
                         {
                             animation.Play("AttackUp");
-                            print("attack up");
+                            //print("attack up");
                         }
             
                     }
@@ -106,12 +106,12 @@ public class walkingEnemy : MonoBehaviour
                         if (deltaX < 0)
                         {
                             animation.Play("AttackLeft");
-                            print("attack left");
+                            //print("attack left");
                         }
                         else if (deltaX > 0)
                         {
                             animation.Play("AttackRight");
-                            print("attack right");
+                            //print("attack right");
                         }
                         
                         

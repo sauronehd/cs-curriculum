@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKeyDown("up")&&onGround>0)
             {
                 body.AddForce(new Vector2(0,400));
-                Debug.Log("ahhh");
+                //Debug.Log("ahhh");
                 onGround -= 1;
             }
             
@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             onGround = 1;
-            Debug.Log("ouch grass");
+            //Debug.Log("ouch grass");
         }
 
 
