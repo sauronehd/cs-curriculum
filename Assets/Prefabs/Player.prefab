@@ -271,7 +271,7 @@ MonoBehaviour:
   read: {fileID: 5774960653562304022}
   body: {fileID: 6449364802413463}
   onGround: 1
-  collide: {fileID: 3557327843128524543}
+  animation: {fileID: 8817025345248629567}
 --- !u!114 &3923347649850382891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +284,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114d37ed8c21848f99304cf142f41aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
