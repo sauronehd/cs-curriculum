@@ -95,4 +95,14 @@ public class TopDown_AnimatorController : MonoBehaviour
     {
         anim.runtimeAnimatorController = animShovel;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Axe")
+        {
+            SwitchToAxe();
+        }
+    }
+
+
 }
