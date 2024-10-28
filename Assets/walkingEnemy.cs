@@ -17,6 +17,7 @@ public class walkingEnemy : MonoBehaviour
      private bool found;
      private float cooldown;
      private AnimatorStateInfo stateInfo; 
+     public GameObject enemyDrop;
     
     void Start()
     {
@@ -142,6 +143,13 @@ public class walkingEnemy : MonoBehaviour
             }
         }
 
+
+
+    }
+
+    void OnDestory()
+    {
+        Instantiate(transform.position,enemyDrop);
     }
 
 
