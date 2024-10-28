@@ -88,6 +88,7 @@ public class TopDown_AnimatorController : MonoBehaviour
     public void SwitchToAxe()
     {
         anim.runtimeAnimatorController = animAxe;
+        print("Switched to axe");
     }
 
     // Call this function to set the weapon back to a shovel.
@@ -96,13 +97,7 @@ public class TopDown_AnimatorController : MonoBehaviour
         anim.runtimeAnimatorController = animShovel;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Axe")
-        {
-            SwitchToAxe();
-        }
-    }
+
 
 
 }

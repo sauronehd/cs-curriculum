@@ -138,6 +138,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4384562642941288703, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
+      propertyPath: enemyDrop
+      value: 
+      objectReference: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac,
+        type: 3}
+    - target: {fileID: 4384562642941288703, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
       propertyPath: waypoints.Array.size
       value: 6
       objectReference: {fileID: 0}

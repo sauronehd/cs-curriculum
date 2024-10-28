@@ -147,9 +147,11 @@ public class walkingEnemy : MonoBehaviour
 
     }
 
-    void OnDestory()
+    void OnDestroy()
     {
-        Instantiate(transform.position,enemyDrop);
+        Instantiate(enemyDrop,transform.position,transform.rotation);
+
+        print("axe made");
     }
 
 

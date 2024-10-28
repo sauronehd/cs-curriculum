@@ -16,12 +16,13 @@ public class Movement : MonoBehaviour
     //public Collider2D collide;
     private managingdotscript gm;
     public Animator animation;
-
+    private TopDown_AnimatorController axeSwitch;
     private AnimatorStateInfo animInfo;
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<managingdotscript>();   
+        axeSwitch = GetComponentInChildren<TopDown_AnimatorController>();
     }
 
     // Update is called once per frame
@@ -88,9 +89,23 @@ public class Movement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Coin")
+        {
+            gm.chnageCoins(1);
+            Object.Destroy(other.gameObject);
+        }
+        else if (other.tag == "Axe")
+        {
+            axeSwitch.SwitchToAxe();
+            Object.Destroy(other.gameObject);
+            print("trigger axe");
+        }
+        else if (other.tag == "Shovel")
+        {
+            axeSwitch.SwitchToShovel();
+            Object.Destroy(other.gameObject);
 
-        gm.chnageCoins(1);
-        Object.Destroy(other.gameObject);
+        }
         
 
     }
