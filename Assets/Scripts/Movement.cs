@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Having a fucking stroke - overworld vairiable is doing nothing
-//Reset the assigning for it - go into PlayerController and make a reading into the scene to assign in update
+using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     private float speed = 4;
+    private string weapon;
     private float xvector;
     private float xdir;
     private float ydir;
@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
         //body.AddForce(new Vector2(0, 7));
 
 
-        if (animInfo.IsName("Shovel_Swing_Horiz") || animInfo.IsName("Shovel_Swing_Down") || animInfo.IsName("Shovel_Swing_Up"))
+        if (animInfo.IsName("Shovel_Swing_Horiz") || animInfo.IsName("Shovel_Swing_Down") || animInfo.IsName("Shovel_Swing_Up")|| animInfo.IsName("Axe_Swing_Horiz") || animInfo.IsName("Axe_Swing_Down") || animInfo.IsName("Axe_Swing_Up"))
         {
             Collider2D[] targets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x+(xdir*0.7f),transform.position.y+(ydir*0.7f)),0.7f);
         
@@ -66,6 +66,12 @@ public class Movement : MonoBehaviour
                 {
                     Destroy(other.gameObject);
                    
+                }
+                else if (other.gameObject.CompareTag("door")&&weapon=="axe")
+                {
+                    axeSwitch.SwitchToShovel();
+                    weapon = "shovel";
+                    SceneManager.LoadScene("Platformer");
                 }
             }
         }
@@ -84,6 +90,7 @@ public class Movement : MonoBehaviour
         }
 
 
+
         
     }
 
@@ -99,6 +106,7 @@ public class Movement : MonoBehaviour
             axeSwitch.SwitchToAxe();
             Object.Destroy(other.gameObject);
             print("trigger axe");
+            weapon = "axe";
         }
         else if (other.tag == "Shovel")
         {

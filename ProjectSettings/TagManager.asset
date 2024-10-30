@@ -12,6 +12,7 @@ TagManager:
   - healthText
   - proj
   - waypoints
+  - door
   layers:
   - Default
   - TransparentFX
