@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
                 {
                     axeSwitch.SwitchToShovel();
                     weapon = "shovel";
-                    SceneManager.LoadScene("Platformer");
+                    Destroy(other.gameObject);
                 }
             }
         }
