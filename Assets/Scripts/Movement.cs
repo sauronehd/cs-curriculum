@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private float yvector;
     public PlayerController read;
     public Rigidbody2D body;
-    public int onGround = 1;
+    public bool onGround;
     //public Collider2D collide;
     private managingdotscript gm;
     public Animator animation;
@@ -36,6 +36,31 @@ public class Movement : MonoBehaviour
         ydir = Input.GetAxis("Vertical");
         yvector = ydir * speed;
 
+    
+        //body.AddForce(new Vector2(0, 7));
+
+
+
+// Right raycast
+        Vector2 rightOrigin = new Vector2(transform.position.x + 0.375f, transform.position.y - 0.442f);
+        Vector2 rightDirection = new Vector2(0, -1);
+        float rayLength = 0.2f;
+        RaycastHit2D[] rightCastArray = Physics2D.RaycastAll(rightOrigin, rightDirection, rayLength);
+        Debug.DrawLine(rightOrigin, rightOrigin + rightDirection * rayLength, Color.red);
+
+        // Left raycast
+        Vector2 leftOrigin = new Vector2(transform.position.x - 0.375f, transform.position.y - 0.442f);
+        Vector2 leftDirection = new Vector2(0, -1);
+        RaycastHit2D[] leftCastArray = Physics2D.RaycastAll(leftOrigin, leftDirection, rayLength);
+        Debug.DrawLine(leftOrigin, leftOrigin + leftDirection * rayLength, Color.blue);
+
+        if (rightCastArray.Length>0||leftCastArray.Length>0)
+        {
+            onGround = true;
+            print("on ground"); 
+        }
+   
+
         if (read.overworld)
         {
 
@@ -44,17 +69,15 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown("up")&&onGround>0)
+            if (Input.GetKeyDown("space")&&onGround)
             {
                 body.AddForce(new Vector2(0,400));
-                //Debug.Log("ahhh");
-                onGround -= 1;
+                Debug.Log("ahhh");
+                onGround = false;
             }
             
 
         }
-        //body.AddForce(new Vector2(0, 7));
-
 
         if (animInfo.IsName("Shovel_Swing_Horiz") || animInfo.IsName("Shovel_Swing_Down") || animInfo.IsName("Shovel_Swing_Up")|| animInfo.IsName("Axe_Swing_Horiz") || animInfo.IsName("Axe_Swing_Down") || animInfo.IsName("Axe_Swing_Up"))
         {
@@ -80,19 +103,11 @@ public class Movement : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print(collision.gameObject.tag);
-        if (collision.gameObject.tag == "ground")
-        {
-            onGround = 1;
-            //Debug.Log("ouch grass");
-        }
-
+    
 
 
         
-    }
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -117,4 +132,8 @@ public class Movement : MonoBehaviour
         
 
     }
+
 }
+
+
+
