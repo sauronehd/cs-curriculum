@@ -20,13 +20,13 @@ public class walkingEnemy : MonoBehaviour
      private AnimatorStateInfo stateInfo; 
      public GameObject enemyDrop;
 
-     private int startPos;
-     private int endPos;
+     private float startPos;
+     private float endPos;
      private int direction = 1;
     void Start()
     {
         startPos = transform.position.x;
-        endPos = transform.position.x + 2;
+        endPos = transform.position.x + 5;
     }
     
 
@@ -160,11 +160,21 @@ public class walkingEnemy : MonoBehaviour
     }
     else
     {
+        transform.position = new Vector3(transform.position.x + (direction * 0.001f), transform.position.y, transform.position.z);
         if (transform.position.x >= endPos||transform.position.x <= startPos)
         {
             direction *= -1;
         }
+
+        if (direction == 1)
+        {
+            animation.Play("WalkRight");
+        }
+        else
+        {
+            animation.Play("WalkLeft");
         
+        }
     }
     }
 
