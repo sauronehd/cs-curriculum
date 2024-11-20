@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class walkingEnemy : MonoBehaviour
 {
@@ -18,65 +19,74 @@ public class walkingEnemy : MonoBehaviour
      private float cooldown;
      private AnimatorStateInfo stateInfo; 
      public GameObject enemyDrop;
-    
+
+     private int startPos;
+     private int endPos;
+     private int direction = 1;
     void Start()
     {
-    
+        startPos = transform.position.x;
+        endPos = transform.position.x + 2;
     }
+    
+
 
     // Update is called once per frame
     void Update()
     {
-        stateInfo = animation.GetCurrentAnimatorStateInfo(0);
-        
-        cooldown -= 1 * Time.deltaTime;
-        
-        movingTowards = Vector3.MoveTowards(transform.position, waypoints[count], 2*Time.deltaTime);
-        
-        Collider2D[] targets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y),7);
-        
-        foreach (var other in targets)
+        if (SceneManager.GetActiveScene().name == "Overworld")
         {
-            if (other.gameObject.CompareTag("Player"))
+        
+            stateInfo = animation.GetCurrentAnimatorStateInfo(0);
+        
+            cooldown -= 1 * Time.deltaTime;
+        
+            movingTowards = Vector3.MoveTowards(transform.position, waypoints[count], 2*Time.deltaTime);
+        
+            Collider2D[] targets = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y),7);
+        
+            foreach (var other in targets)
             {
+                if (other.gameObject.CompareTag("Player"))
+                {
                 
-                movingTowards =  Vector3.MoveTowards(transform.position,other.gameObject.transform.position,2*Time.deltaTime) ;
+                     movingTowards =  Vector3.MoveTowards(transform.position,other.gameObject.transform.position,2*Time.deltaTime) ;
                 
-                found = true;
+                     found = true;
+                }
             }
-        }
         
         
         
-        deltaX = movingTowards.x - transform.position.x;
-        deltaY = movingTowards.y - transform.position.y;
+            deltaX = movingTowards.x - transform.position.x;
+            deltaY = movingTowards.y - transform.position.y;
 
-        if (stateInfo.IsName("WalkUp")||stateInfo.IsName("WalkDown")||stateInfo.IsName("WalkRight")||stateInfo.IsName("WalkLeft"))
-        {
-            if (MathF.Abs(deltaY) > MathF.Abs(3 * deltaX))
+            if (stateInfo.IsName("WalkUp")||stateInfo.IsName("WalkDown")||stateInfo.IsName("WalkRight")||stateInfo.IsName("WalkLeft"))
             {
-                if (deltaY < 0)
+                if (MathF.Abs(deltaY) > MathF.Abs(3 * deltaX))
                 {
-                    animation.Play("WalkDown");
-                }
-                else if (deltaY > 0)
-                {
-                    animation.Play("WalkUp");
-                }
+                    if (deltaY < 0)
+                    {
+                        animation.Play("WalkDown");
+                    }
+                    else if (deltaY > 0)
+                    {
+                        animation.Play("WalkUp");
+                    }
 
-            }
-            else
-            {
-                if (deltaX < 0)
-                {
-                    animation.Play("WalkLeft");
                 }
-                else if (deltaX > 0)
+                else
                 {
-                    animation.Play("WalkRight");
+                    if (deltaX < 0)
+                    {
+                        animation.Play("WalkLeft");
+                    }
+                    else if (deltaX > 0)
+                    {
+                        animation.Play("WalkRight");
+                    }
                 }
             }
-        }
 
 
 
@@ -145,6 +155,17 @@ public class walkingEnemy : MonoBehaviour
 
 
 
+
+
+    }
+    else
+    {
+        if (transform.position.x >= endPos||transform.position.x <= startPos)
+        {
+            direction *= -1;
+        }
+        
+    }
     }
 
     void OnDestroy()
