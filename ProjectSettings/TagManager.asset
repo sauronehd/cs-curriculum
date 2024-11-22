@@ -13,6 +13,7 @@ TagManager:
   - proj
   - waypoints
   - door
+  - die
   layers:
   - Default
   - TransparentFX
