@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
-    private float speed = 4;
+    [SerializeField]private float speed = 4;
     private string weapon;
     private float xvector;
     private float xdir;
@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private float yvector;
     public PlayerController read;
     public Rigidbody2D body;
-    public bool onGround;
+    [SerializeField]public bool onGround;
     //public Collider2D collide;
     private managingdotscript gm;
     public Animator animation;
@@ -28,6 +28,16 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!onGround&&!read.overworld)
+        {
+            speed=2;
+        }
+        else
+        {
+            speed=4;
+        }
+
 
         animInfo = animation.GetCurrentAnimatorStateInfo(0);
         xdir = Input.GetAxis("Horizontal");
