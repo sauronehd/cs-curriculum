@@ -14,6 +14,7 @@ TagManager:
   - waypoints
   - door
   - die
+  - mystic
   layers:
   - Default
   - TransparentFX
