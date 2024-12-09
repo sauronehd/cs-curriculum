@@ -14,15 +14,51 @@ public class forceBeams : MonoBehaviour
     [SerializeField]string hitTagDown;
     [SerializeField]string hitTagLeft;
     [SerializeField]string hitTagRight;
+
+
+    bool w;
+    bool a;
+    bool s;
+    bool d;
+    private LineRenderer line;  
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
 void Update()
 {
+
+    w = Input.GetKey(KeyCode.W);
+    a = Input.GetKey(KeyCode.A);
+    s = Input.GetKey(KeyCode.S);
+    d = Input.GetKey(KeyCode.D);
+
+    if (w)
+    {
+        
+    }
+
+    if (s)
+    {
+        
+    }
+
+    if (a)
+    {
+        
+    }
+
+    if (d)
+    {
+        
+    }
+    
+
+
     // Reset rayLength and isHit at the start of each Update
     rayLength = 0;
     isHit = false;

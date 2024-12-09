@@ -9,7 +9,7 @@ public class health : MonoBehaviour
 
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<managingdotscript>(); 
+        gm = FindObjectOfType<managingdotscript>();
         
     }
 

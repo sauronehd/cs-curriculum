@@ -19,9 +19,13 @@ public class Movement : MonoBehaviour
     private TopDown_AnimatorController axeSwitch;
     private AnimatorStateInfo animInfo;
     // Start is called before the first frame update
+    int up;
+    int down;
+    int left;
+    int right;
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<managingdotscript>();   
+        gm = FindObjectOfType<managingdotscript>();
         axeSwitch = GetComponentInChildren<TopDown_AnimatorController>();
     }
 
@@ -29,9 +33,48 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
+
+
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            up = 1;
+        }
+        else
+        {
+            up = 0;
+        }
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            down = 1;
+        }
+        else
+        {
+            down = 0;
+        }   
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            left = 1;
+        }
+        else
+        {
+            left = 0;
+        }
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            right = 1;
+        }
+        else
+        {
+            right = 0;
+        }
+
         if (!onGround&&!read.overworld)
         {
-            speed=2;
+            speed-=0.007f;
+            if (speed<1)
+            {
+                speed = 1;
+            }
         }
         else
         {
@@ -40,10 +83,10 @@ public class Movement : MonoBehaviour
 
 
         animInfo = animation.GetCurrentAnimatorStateInfo(0);
-        xdir = Input.GetAxis("Horizontal");
+        xdir = right-left;
         xvector = xdir * speed;
         transform.position = new Vector3(transform.position.x+(xvector*Time.deltaTime),transform.position.y,transform.position.z);
-        ydir = Input.GetAxis("Vertical");
+        ydir = up-down;
         yvector = ydir * speed;
 
     
