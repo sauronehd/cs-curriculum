@@ -15,6 +15,11 @@ public class forceBeams : MonoBehaviour
     [SerializeField]string hitTagLeft;
     [SerializeField]string hitTagRight;
 
+    private float upLength;
+    private float downLength;
+    private float leftLength;
+    private float rightLength;
+
 
     bool w;
     bool a;
@@ -115,18 +120,22 @@ while (isHit == false)
             if(direction=="up")
             {
                 hitTagUp = hitTag;
+                upLength = rayLength;
             }
             else if(direction=="down")
             {
                 hitTagDown = hitTag;
+                downLength = rayLength;
             }
             else if(direction=="left")
             {
                 hitTagLeft = hitTag;
+                leftLength = rayLength;
             }
             else if(direction=="right")
             {
                 hitTagRight = hitTag;
+                rightLength = rayLength;
 
             }
             break;
@@ -138,6 +147,26 @@ while (isHit == false)
         }
     }
 }
+
+    public float getUpLength()
+    {
+        return upLength;
+    }
+    public float getDownLength()
+    {
+        return downLength;
+    }
+    public float getLeftLength()
+    {
+        return leftLength;
+    }
+    public float getRightLength()
+    {
+        return rightLength;
+    }
+
+
+
 
 
 }
