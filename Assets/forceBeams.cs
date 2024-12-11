@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+/*
+Notes:
+Add a prefab to each script that is itself(upbeam gets upBeam, down beam gets downBeam, etc.)
+This will allow them to duplicate themselves.
+
+Addprefabs of each beam to this script, so they can be created upon associated key press.
+
+*/
+
+
 public class forceBeams : MonoBehaviour
 {
 
