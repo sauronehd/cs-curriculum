@@ -107,7 +107,7 @@ void Update()
     if(createUp)
     {
         GameObject made = Instantiate(upBeamObject, this.transform, worldPositionStays:false);
-        upBeam upBeamScript = made.GetComponent<upBeam>();
+        upbeam upBeamScript = made.GetComponent<upbeam>();
         upBeamScript.id = 0;
     }
 

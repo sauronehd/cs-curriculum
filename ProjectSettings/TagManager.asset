@@ -15,6 +15,10 @@ TagManager:
   - door
   - die
   - mystic
+  - upBeam
+  - leftBeam
+  - rightBeam
+  - downBeam
   layers:
   - Default
   - TransparentFX
