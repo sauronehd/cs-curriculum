@@ -34,15 +34,23 @@ public class forceBeams : MonoBehaviour
 
 
     bool w;
+    private bool createUp;
+    public GameObject upBeamObject;
     bool a;
+    bool createLeft;
+    public GameObject leftBeamObject;
     bool s;
+    bool createDown;
+    public GameObject downBeamObject;
     bool d;
-    private LineRenderer line;  
+    bool createRight;
+    public GameObject rightBeamObject;
+     
 
     // Start is called before the first frame update
     void Start()
     {
-        line = GetComponent<LineRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -50,29 +58,60 @@ void Update()
 {
 
     w = Input.GetKey(KeyCode.W);
+    createUp = Input.GetKeyDown(KeyCode.W);
     a = Input.GetKey(KeyCode.A);
+    createLeft = Input.GetKeyDown(KeyCode.A);
     s = Input.GetKey(KeyCode.S);
+    createDown = Input.GetKeyDown(KeyCode.S);
     d = Input.GetKey(KeyCode.D);
+    createRight = Input.GetKeyDown(KeyCode.D);
 
-    if (w)
+    if (!w)
     {
+        GameObject[] upBeams = GameObject.FindGameObjectsWithTag("upBeam");
+        foreach (GameObject dest in upBeams)
+        {
+            Destroy(dest);
+        }
+    }
+
+    if (!s)
+    {
+        GameObject[] downBeams = GameObject.FindGameObjectsWithTag("downBeam");
+        foreach (GameObject dest in downBeams)
+        {
+            Destroy(dest);
+        }
         
     }
 
-    if (s)
+    if (!a)
     {
+        GameObject[] leftBeams = GameObject.FindGameObjectsWithTag("leftBeam");
+        foreach (GameObject dest in leftBeams)
+        {
+            Destroy(dest);
+        }
         
     }
 
-    if (a)
+    if (!d)
     {
-        
+        GameObject[] rightBeams = GameObject.FindGameObjectsWithTag("rightBeam");
+        foreach (GameObject dest in rightBeams)
+        {
+            Destroy(dest);
+        }
     }
 
-    if (d)
+    if(createUp)
     {
-        
+        GameObject made = Instantiate(upBeamObject, this.transform, worldPositionStays:false);
+        upBeam upBeamScript = made.GetComponent<upBeam>();
+        upBeamScript.id = 0;
     }
+
+
     
 
 
