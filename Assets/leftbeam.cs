@@ -16,6 +16,7 @@ public class leftbeam : MonoBehaviour
         info = GameObject.Find("Player").GetComponent<forceBeams>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         size = spriteRenderer.bounds.size.x;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -5f);
     }
 
     // Update is called once per frame
