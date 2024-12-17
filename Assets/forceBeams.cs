@@ -27,10 +27,10 @@ public class forceBeams : MonoBehaviour
     [SerializeField]string hitTagLeft;
     [SerializeField]string hitTagRight;
 
-    private float upLength;
-    private float downLength;
-    private float leftLength;
-    private float rightLength;
+    public float upLength;
+    public float downLength;
+    public float leftLength;
+    public float rightLength;
 
 
     bool w;
@@ -106,9 +106,27 @@ void Update()
 
     if(createUp)
     {
-        GameObject made = Instantiate(upBeamObject, this.transform, worldPositionStays:false);
-        upbeam upBeamScript = made.GetComponent<upbeam>();
-        upBeamScript.id = 0;
+        GameObject madeu = Instantiate(upBeamObject, this.transform, worldPositionStays:false);
+        upbeam upBeamScript = madeu.GetComponent<upbeam>();
+        upBeamScript.setID(0);
+    }
+    if(createDown)
+    {
+        GameObject maded = Instantiate(downBeamObject, this.transform, worldPositionStays:false);
+        downbeam downBeamScript = maded.GetComponent<downbeam>();
+        downBeamScript.setID(0);
+    }
+    if(createLeft)
+    {
+        GameObject madel = Instantiate(leftBeamObject, this.transform, worldPositionStays:false);
+        leftbeam leftBeamScript = madel.GetComponent<leftbeam>();
+        leftBeamScript.setID(0);
+    }
+    if(createRight)
+    {
+        GameObject mader = Instantiate(rightBeamObject, this.transform, worldPositionStays:false);
+        rightbeam rightBeamScript = mader.GetComponent<rightbeam>();
+        rightBeamScript.setID(0);
     }
 
 
