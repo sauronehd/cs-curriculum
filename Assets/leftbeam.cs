@@ -26,12 +26,14 @@ public class leftbeam : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*
         if(needed>id)
         {
             GameObject copy = Instantiate(clone, this.transform, worldPositionStays:false);
             leftbeam cloneScript = copy.GetComponent<leftbeam>();
             cloneScript.setID(id+1);
         }
+        */
     }
 
     public void setID(int i)

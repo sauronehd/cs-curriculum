@@ -304,3 +304,15 @@ MonoBehaviour:
   hitTagDown: 
   hitTagLeft: 
   hitTagRight: 
+  upLength: 0
+  downLength: 0
+  leftLength: 0
+  rightLength: 0
+  upBeamObject: {fileID: 6684425162358622709, guid: 5008029eca8a44d488328c9e19fc245a,
+    type: 3}
+  leftBeamObject: {fileID: 9179927108574998265, guid: 3fbcf9da7063a4879bf16c58fb2487ba,
+    type: 3}
+  downBeamObject: {fileID: 6555060660976439576, guid: e64ef81ca26e14bf689c22b4c44c3b87,
+    type: 3}
+  rightBeamObject: {fileID: 3654977435800638161, guid: f1980e7102d0a4f37b786b3f932c0a44,
+    type: 3}

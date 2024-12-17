@@ -16,6 +16,7 @@ public class downbeam : MonoBehaviour
         info = GameObject.Find("Player").GetComponent<forceBeams>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         size = spriteRenderer.bounds.size.x;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -5f);
     }
 
     // Update is called once per frame
@@ -26,12 +27,15 @@ public class downbeam : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*
         if(needed>id)
         {
             GameObject copy = Instantiate(clone, this.transform, worldPositionStays:false);
             downbeam cloneScript = copy.GetComponent<downbeam>();
             cloneScript.setID(id+1);
         }
+        */
+        print(transform.position);
     }
 
     public void setID(int i)

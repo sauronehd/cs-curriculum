@@ -26,12 +26,14 @@ public class upbeam : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*
         if(needed>id)
         {
             GameObject copy = Instantiate(clone, this.transform, worldPositionStays:false);
             upbeam cloneScript = copy.GetComponent<upbeam>();
             cloneScript.setID(id+1);
         }
+        */
     }
 
     public void setID(int i)

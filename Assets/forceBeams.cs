@@ -80,7 +80,7 @@ void Update()
         GameObject[] downBeams = GameObject.FindGameObjectsWithTag("downBeam");
         foreach (GameObject dest in downBeams)
         {
-            Destroy(dest);
+          //  Destroy(dest);
         }
         
     }
@@ -112,7 +112,7 @@ void Update()
     }
     if(createDown)
     {
-        GameObject maded = Instantiate(downBeamObject, this.transform, worldPositionStays:false);
+        GameObject maded = Instantiate(downBeamObject, this.transform,worldPositionStays:false);
         downbeam downBeamScript = maded.GetComponent<downbeam>();
         downBeamScript.setID(0);
     }

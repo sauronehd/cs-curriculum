@@ -26,12 +26,14 @@ public class rightbeam : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        /*
         if(needed>id)
         {
             GameObject copy = Instantiate(clone, this.transform, worldPositionStays:false);
             rightbeam cloneScript = copy.GetComponent<rightbeam>();
             cloneScript.setID(id+1);
         }
+        */
     }
 
     public void setID(int i)
