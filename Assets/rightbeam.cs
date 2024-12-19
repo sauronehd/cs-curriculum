@@ -11,17 +11,36 @@ public class rightbeam : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private forceBeams info;
     public GameObject clone;
+    public static Transform og;
     void Start()
     {
         info = GameObject.Find("Player").GetComponent<forceBeams>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         size = spriteRenderer.bounds.size.x;
         transform.position = new Vector3(transform.position.x, transform.position.y, -5f);
+        if(needed>id)
+        {
+            GameObject copy = Instantiate(clone, new Vector3(transform.position.x, transform.position.y+size, transform.position.z), Quaternion.identity);
+            rightbeam cloneScript = copy.GetComponent<rightbeam>();
+            Transform pos = copy.transform;
+            pos.rotation = transform.rotation;
+            cloneScript.setID(id+1);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(id==0)
+        {
+            needed = info.upLength/size;
+            og = transform;
+        }
+        else
+        {
+            transform.position = new Vector3(og.position.x+size*id,og.position.y, og.position.z);
+        }
         needed = info.rightLength/size;
         if (needed<id)
         {
