@@ -45,12 +45,14 @@ public class forceBeams : MonoBehaviour
     bool d;
     bool createRight;
     public GameObject rightBeamObject;
+
+    Rigidbody2D rb;
      
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -74,6 +76,10 @@ void Update()
             Destroy(dest);
         }
     }
+    else
+    {
+        rb.AddForce(Vector2.down);
+    }
 
     if (!s)
     {
@@ -83,6 +89,10 @@ void Update()
             Destroy(dest);
         }
         
+    }
+    else
+    {
+        rb.AddForce(Vector2.up);
     }
 
     if (!a)
@@ -94,6 +104,10 @@ void Update()
         }
         
     }
+    else
+    {
+        rb.AddForce(Vector2.right);
+    }
 
     if (!d)
     {
@@ -102,6 +116,10 @@ void Update()
         {
             Destroy(dest);
         }
+    }
+    else
+    {
+        rb.AddForce(Vector2.left);
     }
 
     if(createUp)
